@@ -3,9 +3,10 @@ package kotlin_test.coroutine_flow.first.`03_cancel_timeout`
 import kotlinx.coroutines.*
 
 /**
- * cancel and join
+ * 일정 시간 끝난 후에 종료하고 싶다면 withTimeout를 사용
+ * 취소 되면 TimeoutCancellationException 발생
  */
-suspend fun doCount04() = coroutineScope {
+suspend fun doCount07() = coroutineScope {
     val job1 = launch(Dispatchers.Default) {
         var i = 1
         var nextTime = System.currentTimeMillis() + 100L
@@ -19,12 +20,10 @@ suspend fun doCount04() = coroutineScope {
             }
         }
     }
-
-    delay(200L)
-    job1.cancel()
-    println("doCount04 Done!")
 }
 
 fun main() = runBlocking {
-    doCount04()
+    withTimeout(500L) {
+        doCount07()
+    }
 }

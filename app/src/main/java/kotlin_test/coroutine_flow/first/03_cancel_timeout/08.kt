@@ -3,9 +3,9 @@ package kotlin_test.coroutine_flow.first.`03_cancel_timeout`
 import kotlinx.coroutines.*
 
 /**
- * cancel and join
+ * withTimeoutOrNull 로 타임아웃에 따라 null 리턴을 할 수 있음
  */
-suspend fun doCount04() = coroutineScope {
+suspend fun doCount08() = coroutineScope {
     val job1 = launch(Dispatchers.Default) {
         var i = 1
         var nextTime = System.currentTimeMillis() + 100L
@@ -19,12 +19,12 @@ suspend fun doCount04() = coroutineScope {
             }
         }
     }
-
-    delay(200L)
-    job1.cancel()
-    println("doCount04 Done!")
 }
 
 fun main() = runBlocking {
-    doCount04()
+    val result = withTimeoutOrNull(500L) {
+        doCount08()
+        true
+    } ?: false
+    println(result)
 }
