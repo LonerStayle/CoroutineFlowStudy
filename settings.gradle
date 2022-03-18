@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "PTR"
+rootProject.name = "CoroutineTestProject"
 include ':app'

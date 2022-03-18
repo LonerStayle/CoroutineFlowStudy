@@ -1,4 +1,4 @@
-package kotlin_test.coroutine_flow.first
+package kotlin_test.coroutine_flow.first.`01_scopebuilder`
 
 import kotlinx.coroutines.runBlocking
 
