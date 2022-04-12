@@ -1,4 +1,4 @@
-package kotlin_test.coroutine_flow.first.`02structured_concurrency`
+package kotlin_test.coroutine_flow.first.`02_structured_concurrency`
 
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay

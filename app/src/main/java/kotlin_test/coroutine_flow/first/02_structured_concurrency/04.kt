@@ -1,4 +1,4 @@
-package kotlin_test.coroutine_flow.first.`02structured_concurrency`
+package kotlin_test.coroutine_flow.first.`02_structured_concurrency`
 
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
@@ -18,22 +18,50 @@ suspend fun doOneTwoThree04() = coroutineScope {
     job.join()
 
     launch {
-        println("launch2: ${Thread.currentThread().name}")
+        println("launch2:${Thread.currentThread().name}")
         println("1!")
     }
 
-    repeat(100_000) {
-        launch {
-            println("launch3: ${Thread.currentThread().name}")
+    launch {
+        repeat(5) {
+            println("launch3:${Thread.currentThread().name}")
             delay(500L)
             println("2!")
         }
     }
+
     println("4!")
 }
 
-fun main() = runBlocking {
+fun main() = runBlocking{
     doOneTwoThree04()
-    println("runBlocking: ${Thread.currentThread().name}")
     println("5!")
 }
+//suspend fun doOneTwoThree04() = coroutineScope {
+//    val job = launch {
+//        println("launch1: ${Thread.currentThread().name}")
+//        delay(1000L)
+//        println("3!")
+//    }
+//    job.join()
+//
+//    launch {
+//        println("launch2: ${Thread.currentThread().name}")
+//        println("1!")
+//    }
+//
+//    repeat(5) {
+//        launch {
+//            println("launch3: ${Thread.currentThread().name}")
+//            delay(500L)
+//            println("2!")
+//        }
+//    }
+//    println("4!")
+//}
+//
+//fun main() = runBlocking {
+//    doOneTwoThree04()
+//    println("runBlocking: ${Thread.currentThread().name}")
+//    println("5!")
+//}

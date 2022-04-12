@@ -14,7 +14,7 @@ fun main()= runBlocking {
 }
 
 //오류 뜸 코루틴 빌더는 코루틴 스코프내에서만 호출해야함
-suspend fun doOneTwoThree(){
+//suspend fun doOneTwoThree(){
 //    launch{ this : 가 코루틴임 리시버 임
 //    }
-}
+//}
